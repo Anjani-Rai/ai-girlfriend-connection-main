@@ -1,37 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export const themePresets = {
-  darkTheme: {
-    name: 'Dark Mode',
-    colors: {
-      background: '240 10% 4%',
-      foreground: '0 0% 95%',
-      primary: '240 60% 60%',
-      'primary-foreground': '240 10% 100%',
-      secondary: '240 20% 12%',
-      'secondary-foreground': '240 10% 100%',
-      accent: '240 70% 65%',
-      'accent-foreground': '240 10% 100%',
-      muted: '240 20% 12%',
-      'muted-foreground': '240 30% 70%',
-      border: '240 20% 18%',
-      input: '240 20% 12%',
-      ring: '240 70% 65%',
-      destructive: '0 90% 60%',
-      'destructive-foreground': '0 0% 100%',
-      popover: '240 10% 4%',
-      'popover-foreground': '0 0% 95%',
-      card: '240 10% 4%',
-      'card-foreground': '0 0% 95%',
-      'partner-bubble': '240 20% 12%',
-      'partner-accent': '240 70% 65%',
-      'partner-progress': '240 70% 65%',
-      'user-bubble': '240 60% 60%',
-      'hover-overlay': '240 20% 12%',
-      'hover-text': '0 0% 95%',
-      'hover-border': '240 70% 65%'
-    }
-  },
   etherealRose: {
     name: 'Ethereal Rose',
     colors: {

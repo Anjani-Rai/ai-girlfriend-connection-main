@@ -93,10 +93,7 @@ export const Settings: React.FC<SettingsProps> = ({ open, onClose }) => {
                   {Object.entries(themePresets).map(([id, theme]) => (
                     <button
                       key={id}
-                      onClick={() => {
-                        setTheme(id);
-                        setDarkMode(false);
-                      }}
+                      onClick={() => setTheme(id)}
                       className={`
                         group relative overflow-hidden p-4 rounded-xl border transition-all duration-300
                         hover:border-primary/50 hover:shadow-lg hover:scale-[1.02]
