@@ -38,21 +38,21 @@ export const Header: React.FC<HeaderProps> = ({ toggleSidebar, relationshipLevel
           </div>
           
           <nav className="flex items-center gap-1 md:gap-3">
-            <Button variant="ghost" size="icon" className="transition-all hover:scale-105 active:scale-95">
+            <Button variant="ghost" size="icon" className="transition-all duration-300 hover:scale-110 hover:rotate-6 hover:bg-primary/10 hover:text-primary">
               <Home size={20} />
             </Button>
-            <Button variant="ghost" size="icon" className="text-partner-accent transition-all hover:scale-105 active:scale-95">
+            <Button variant="ghost" size="icon" className="text-partner-accent transition-all duration-300 hover:scale-110 hover:-rotate-6 hover:bg-partner-accent/10">
               <MessageSquare size={20} />
             </Button>
             <Button 
               variant="ghost" 
               size="icon" 
-              className="transition-all hover:scale-105 active:scale-95"
+              className="transition-all duration-300 hover:scale-110 hover:rotate-12 hover:bg-primary/10 hover:text-primary"
               onClick={() => setSettingsOpen(true)}
             >
               <Settings size={20} />
             </Button>
-            <Button variant="ghost" size="icon" className="relative transition-all hover:scale-105 active:scale-95">
+            <Button variant="ghost" size="icon" className="relative transition-all duration-300 hover:scale-110 hover:-rotate-6 hover:bg-partner-accent/10 hover:text-partner-accent">
               <Bell size={20} />
               <span className="absolute top-0 right-0 w-2 h-2 bg-partner-accent rounded-full"></span>
             </Button>

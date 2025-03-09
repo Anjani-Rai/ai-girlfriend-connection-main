@@ -21,9 +21,8 @@ interface SettingsProps {
 export const Settings: React.FC<SettingsProps> = ({ open, onClose }) => {
   const [notifications, setNotifications] = useState(true);
   const [dailyReminders, setDailyReminders] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
   const { currentTheme, setTheme } = useTheme();
-  
+
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
@@ -35,7 +34,7 @@ export const Settings: React.FC<SettingsProps> = ({ open, onClose }) => {
               className="h-8 w-8 mr-1" 
               onClick={onClose}
             >
-              <ArrowLeft size={16} />
+              <ArrowLeft size={16} className="transform transition-all duration-300 hover:scale-110 hover:-translate-x-1 hover:text-primary" />
             </Button>
             Settings
           </DialogTitle>
@@ -45,7 +44,7 @@ export const Settings: React.FC<SettingsProps> = ({ open, onClose }) => {
           {/* Notifications Section */}
           <div className="space-y-4">
             <h3 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-              <Bell size={16} />
+              <Bell size={16} className="transform transition-all duration-300 hover:scale-110 hover:rotate-12 hover:text-primary" />
               Notifications
             </h3>
             
@@ -83,38 +82,27 @@ export const Settings: React.FC<SettingsProps> = ({ open, onClose }) => {
           {/* Appearance Section */}
           <div className="space-y-4">
             <h3 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-              <Palette size={16} />
+              <Palette size={16} className="transform transition-all duration-300 hover:scale-110 hover:-rotate-12 hover:text-primary animate-pulse" />
               Appearance
             </h3>
             
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="dark-mode" className="flex flex-col gap-1">
-                  <span>Dark mode</span>
-                  <span className="font-normal text-xs text-muted-foreground">
-                    Toggle dark mode theme
-                  </span>
-                </Label>
-                <Switch
-                  id="dark-mode"
-                  checked={darkMode}
-                  onCheckedChange={setDarkMode}
-                />
-              </div>
-
               <div className="space-y-4">
                 <Label className="text-sm">Theme Presets</Label>
                 <div className="grid grid-cols-2 gap-4">
                   {Object.entries(themePresets).map(([id, theme]) => (
                     <button
                       key={id}
-                      onClick={() => setTheme(id)}
+                      onClick={() => {
+                        setTheme(id);
+                        setDarkMode(false);
+                      }}
                       className={`
                         group relative overflow-hidden p-4 rounded-xl border transition-all duration-300
                         hover:border-primary/50 hover:shadow-lg hover:scale-[1.02]
                         ${currentTheme === id 
                           ? 'border-primary ring-2 ring-primary/20 shadow-md' 
-                          : 'border-border'
+                          : 'border-border hover:bg-accent/5'
                         }
                       `}
                     >
@@ -132,23 +120,23 @@ export const Settings: React.FC<SettingsProps> = ({ open, onClose }) => {
                           <div 
                             className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/20 to-transparent"
                           />
-                          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-primary/10">
                             <div className="flex items-center justify-center h-full">
-                              <span className="px-3 py-1 bg-white/90 rounded-full text-xs font-medium shadow-sm">
+                              <span className="px-3 py-1.5 bg-background/95 text-primary rounded-full text-xs font-medium shadow-sm border border-primary/20">
                                 Select Theme
                               </span>
                             </div>
                           </div>
                         </div>
                         <div className="space-y-1.5">
-                          <p className="text-sm font-medium">{theme.name}</p>
+                          <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{theme.name}</p>
                           <div className="flex gap-1.5">
                             {['primary', 'accent', 'background'].map((colorKey) => (
                               <div
                                 key={colorKey}
-                                className="w-4 h-4 rounded-full border border-border/50"
+                                className="w-4 h-4 rounded-full border border-border/50 transition-transform group-hover:scale-110"
                                 style={{
-                                  background: `hsl(${theme.colors[colorKey]})`,
+                                  background: `hsl(${theme.colors[colorKey]})`
                                 }}
                               />
                             ))}
@@ -165,15 +153,21 @@ export const Settings: React.FC<SettingsProps> = ({ open, onClose }) => {
           {/* Account Section */}
           <div className="space-y-4">
             <h3 className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-              <User size={16} />
+              <User size={16} className="transform transition-all duration-300 hover:scale-110 hover:rotate-6 hover:text-primary" />
               Account
             </h3>
             
             <div className="space-y-3">
-              <Button variant="outline" className="w-full justify-start">
+              <Button 
+                variant="outline" 
+                className="w-full justify-start transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:bg-accent/10 hover:text-primary hover:border-primary/50"
+              >
                 Edit Profile
               </Button>
-              <Button variant="outline" className="w-full justify-start text-destructive hover:text-destructive">
+              <Button 
+                variant="outline" 
+                className="w-full justify-start transition-all duration-300 hover:scale-[1.01] hover:shadow-md hover:bg-destructive/10 hover:text-destructive hover:border-destructive/50"
+              >
                 Delete All Conversations
               </Button>
             </div>
