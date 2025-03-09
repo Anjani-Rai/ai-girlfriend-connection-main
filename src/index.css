@@ -1,0 +1,65 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --primary: 335 90% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 335 30% 96%;
+    --secondary-foreground: 335 50% 15%;
+    --muted: 335 30% 96%;
+    --muted-foreground: 335 40% 40%;
+    --accent: 335 85% 65%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 90% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 335 30% 92%;
+    --input: 335 30% 96%;
+    --ring: 335 85% 65%;
+    --partner-bubble: 335 100% 97%;
+    --partner-accent: 335 85% 65%;
+    --partner-progress: 335 85% 65%;
+    --user-bubble: 335 90% 65%;
+    
+    /* Add all other theme variables */
+  }
+
+  .dark {
+    --background: 335 50% 3.9%;
+    --foreground: 335 10% 98%;
+    /* Add dark mode variants for all colors */
+  }
+}
+
+* {
+  @apply transition-colors duration-200;
+}
+
+@layer utilities {
+  .glass-morphism {
+    @apply backdrop-blur-md bg-white/60 border border-pink-100/30 shadow-sm;
+  }
+  
+  .chat-container {
+    height: calc(100vh - 4rem - 5rem);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .chat-container {
+      height: calc(100vh - 4rem - 5rem);
+    }
+  }
+}
